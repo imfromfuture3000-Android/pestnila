@@ -27,20 +27,15 @@ final class DescribeCall
     private ?BeforeEachCall $currentBeforeEachCall = null;
 
     /**
-     * The unique description for this describe block
-     */
-    private readonly Description $description;
-
-    /**
      * Creates a new Pending Call.
      */
     public function __construct(
         public readonly TestSuite $testSuite,
         public readonly string $filename,
-        string $description,
+        public readonly Description $description,
         public readonly Closure $tests
     ) {
-        $this->description = new Description($description);
+        //
     }
 
     /**
