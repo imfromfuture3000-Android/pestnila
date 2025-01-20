@@ -225,7 +225,7 @@ final class JunitXmlLogger
      */
     public function testFinished(Finished $event): void
     {
-        if (!$this->prepared || $this->preparationFailed) {
+        if (! $this->prepared || $this->preparationFailed) {
             return;
         }
 
