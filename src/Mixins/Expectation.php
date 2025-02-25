@@ -815,11 +815,10 @@ final class Expectation
             $propertyValue = $this->value->{$property};
 
             $second_message = $message !== '' ? $message : sprintf(
-                    'Failed asserting that an object has a property %s with the value %s.',
-                    $this->export($property),
-                    $this->export($propertyValue),
-                );
-            }
+                'Failed asserting that an object has a property %s with the value %s.',
+                $this->export($property),
+                $this->export($propertyValue),
+            );
 
             Assert::assertEquals($value, $propertyValue, $second_message);
         }
