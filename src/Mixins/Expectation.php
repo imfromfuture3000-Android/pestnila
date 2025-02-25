@@ -780,7 +780,6 @@ final class Expectation
         }
 
         foreach ($array as $key => $value) {
-            $message = '';
             Assert::assertArrayHasKey($key, $valueAsArray, $message);
 
             $second_message = $message !== '' ? $message : sprintf(
