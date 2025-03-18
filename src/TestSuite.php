@@ -101,7 +101,7 @@ final class TestSuite
         }
 
         if (! self::$instance instanceof self) {
-            Panic::with(new InvalidPestCommand);
+            throw new InvalidPestCommand;
         }
 
         return self::$instance;
