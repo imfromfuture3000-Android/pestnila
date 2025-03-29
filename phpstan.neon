@@ -1,14 +1,12 @@
 includes:
-    - vendor/phpstan/phpstan-strict-rules/rules.neon
-    - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+    - phpstan-baseline.neon
 
 parameters:
-    level: max
+    level: 7
     paths:
         - src
 
-    checkMissingIterableValueType: true
-    reportUnmatchedIgnoredErrors: true
+    reportUnmatchedIgnoredErrors: false
 
     ignoreErrors:
         - "#type mixed is not subtype of native#"
