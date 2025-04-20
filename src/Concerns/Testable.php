@@ -102,27 +102,6 @@ trait Testable
     private array $__snapshotChanges = [];
 
     /**
-     * Creates a new Test Case instance.
-     */
-    public function __construct(string $name)
-    {
-        parent::__construct($name);
-
-        $test = TestSuite::getInstance()->tests->get(self::$__filename);
-
-        if ($test->hasMethod($name)) {
-            $method = $test->getMethod($name);
-            $this->__description = self::$__latestDescription = $method->description;
-            self::$__latestAssignees = $method->assignees;
-            self::$__latestNotes = $method->notes;
-            self::$__latestIssues = $method->issues;
-            self::$__latestPrs = $method->prs;
-            $this->__describing = $method->describing;
-            $this->__test = $method->getClosure();
-        }
-    }
-
-    /**
      * Resets the test case static properties.
      */
     public static function flush(): void
@@ -240,6 +219,9 @@ trait Testable
     {
         TestSuite::getInstance()->test = $this;
 
+        // Initialize test case properties
+        $this->__initializeTestCase();
+
         $method = TestSuite::getInstance()->tests->get(self::$__filename)->getMethod($this->name());
 
         $method->setUp($this);
@@ -283,6 +265,31 @@ trait Testable
         }
 
         $this->__callClosure($beforeEach, $arguments);
+    }
+
+    /**
+     * Initialize test case properties from TestSuite.
+     */
+    private function __initializeTestCase(): void
+    {
+        // Return if the test case has already been initialized
+        if (isset($this->__test)) {
+            return;
+        }
+
+        $name = $this->name();
+        $test = TestSuite::getInstance()->tests->get(self::$__filename);
+
+        if ($test->hasMethod($name)) {
+            $method = $test->getMethod($name);
+            $this->__description = self::$__latestDescription = $method->description;
+            self::$__latestAssignees = $method->assignees;
+            self::$__latestNotes = $method->notes;
+            self::$__latestIssues = $method->issues;
+            self::$__latestPrs = $method->prs;
+            $this->__describing = $method->describing;
+            $this->__test = $method->getClosure();
+        }
     }
 
     /**
