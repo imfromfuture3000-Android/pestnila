@@ -10,4 +10,4 @@ test('preset invalid name', function () {
     $this->preset()->myAnotherFramework();
 })->throws(InvalidArgumentException::class, 'The preset [myAnotherFramework] does not exist. The available presets are [php, laravel, strict, security, relaxed, myFramework].');
 
-// arch()->preset()->myFramework();
+arch()->preset()->myFramework();

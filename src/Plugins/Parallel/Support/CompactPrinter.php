@@ -131,14 +131,14 @@ final class CompactPrinter
             $status['collected'],
             $status['threshold'],
             $status['roots'],
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
+            0.00,
+            0.00,
+            0.00,
+            0.00,
+            false,
+            false,
+            false,
+            0,
         );
 
         $telemetry = new Info(

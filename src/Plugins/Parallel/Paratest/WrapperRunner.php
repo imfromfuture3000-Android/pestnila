@@ -313,6 +313,7 @@ final class WrapperRunner implements RunnerInterface
             $testResult = unserialize($contents);
             assert($testResult instanceof TestResult);
 
+
             $testResultSum = new TestResult(
                 (int) $testResultSum->hasTests() + (int) $testResult->hasTests(),
                 $testResultSum->numberOfTestsRun() + $testResult->numberOfTestsRun(),
@@ -325,8 +326,10 @@ final class WrapperRunner implements RunnerInterface
                 array_merge_recursive($testResultSum->testMarkedIncompleteEvents(), $testResult->testMarkedIncompleteEvents()),
                 array_merge_recursive($testResultSum->testTriggeredPhpunitDeprecationEvents(), $testResult->testTriggeredPhpunitDeprecationEvents()),
                 array_merge_recursive($testResultSum->testTriggeredPhpunitErrorEvents(), $testResult->testTriggeredPhpunitErrorEvents()),
+                array_merge_recursive($testResultSum->testTriggeredPhpunitNoticeEvents(), $testResult->testTriggeredPhpunitNoticeEvents()),
                 array_merge_recursive($testResultSum->testTriggeredPhpunitWarningEvents(), $testResult->testTriggeredPhpunitWarningEvents()),
                 array_merge_recursive($testResultSum->testRunnerTriggeredDeprecationEvents(), $testResult->testRunnerTriggeredDeprecationEvents()),
+                array_merge_recursive($testResultSum->testRunnerTriggeredNoticeEvents(), $testResult->testRunnerTriggeredNoticeEvents()),
                 array_merge_recursive($testResultSum->testRunnerTriggeredWarningEvents(), $testResult->testRunnerTriggeredWarningEvents()),
                 array_merge_recursive($testResultSum->errors(), $testResult->errors()),
                 array_merge_recursive($testResultSum->deprecations(), $testResult->deprecations()),
@@ -351,8 +354,10 @@ final class WrapperRunner implements RunnerInterface
             $testResultSum->testMarkedIncompleteEvents(),
             $testResultSum->testTriggeredPhpunitDeprecationEvents(),
             $testResultSum->testTriggeredPhpunitErrorEvents(),
+            $testResultSum->testTriggeredPhpunitNoticeEvents(),
             $testResultSum->testTriggeredPhpunitWarningEvents(),
             $testResultSum->testRunnerTriggeredDeprecationEvents(),
+            $testResultSum->testRunnerTriggeredNoticeEvents(),
             array_values(array_filter(
                 $testResultSum->testRunnerTriggeredWarningEvents(),
                 fn (WarningTriggered $event): bool => ! str_contains($event->message(), 'No tests found')
