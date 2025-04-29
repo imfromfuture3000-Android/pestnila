@@ -34,7 +34,7 @@ final class CompactPrinter
     /**
      * @var array<string, array<int, string>>
      */
-    private const LOOKUP_TABLE = [
+    private const array LOOKUP_TABLE = [
         '.' => ['gray', '.'],
         'S' => ['yellow', 's'],
         'T' => ['cyan', 't'],

@@ -17,7 +17,7 @@ final class BootOverrides implements Bootstrapper
      *
      * @var array<string, string>
      */
-    public const FILES = [
+    public const array FILES = [
         '53c246e5f416a39817ac81124cdd64ea8403038d01d7a202e1ffa486fbdf3fa7' => 'Runner/Filter/NameFilterIterator.php',
         '77ffb7647b583bd82e37962c6fbdc4b04d3344d8a2c1ed103e625ed1ff7cb5c2' => 'Runner/ResultCache/DefaultResultCache.php',
         'd0e81317889ad88c707db4b08a94cadee4c9010d05ff0a759f04e71af5efed89' => 'Runner/TestSuiteLoader.php',

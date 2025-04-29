@@ -219,9 +219,6 @@ trait Testable
     {
         TestSuite::getInstance()->test = $this;
 
-        // Initialize test case properties
-        $this->__initializeTestCase();
-
         $method = TestSuite::getInstance()->tests->get(self::$__filename)->getMethod($this->name());
 
         $method->setUp($this);
@@ -270,7 +267,7 @@ trait Testable
     /**
      * Initialize test case properties from TestSuite.
      */
-    private function __initializeTestCase(): void
+    public function __initializeTestCase(): void
     {
         // Return if the test case has already been initialized
         if (isset($this->__test)) {

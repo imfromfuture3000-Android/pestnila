@@ -13,12 +13,9 @@ final class Str
      * Pool of alpha-numeric characters for generating (unsafe) random strings
      * from.
      */
-    private const POOL = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    private const string POOL = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    /**
-     * @var string
-     */
-    private const PREFIX = '__pest_evaluable_';
+    private const string PREFIX = '__pest_evaluable_';
 
     /**
      * Create a (unsecure & non-cryptographically safe) random alpha-numeric

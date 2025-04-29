@@ -15,7 +15,7 @@ final class Only implements Terminable
     /**
      * The temporary folder.
      */
-    private const TEMPORARY_FOLDER = __DIR__
+    private const string TEMPORARY_FOLDER = __DIR__
         .DIRECTORY_SEPARATOR
         .'..'
         .DIRECTORY_SEPARATOR

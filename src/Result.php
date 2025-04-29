@@ -13,11 +13,11 @@ use PHPUnit\TextUI\Configuration\Configuration;
  */
 final class Result
 {
-    private const SUCCESS_EXIT = 0;
+    private const int SUCCESS_EXIT = 0;
 
-    private const FAILURE_EXIT = 1;
+    private const int FAILURE_EXIT = 1;
 
-    private const EXCEPTION_EXIT = 2;
+    private const int EXCEPTION_EXIT = 2;
 
     /**
      * If the exit code is different from 0.

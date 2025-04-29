@@ -21,7 +21,7 @@ final class Configuration implements HandlesArguments, Terminable
     /**
      * The base PHPUnit file.
      */
-    public const BASE_PHPUNIT_FILE = __DIR__
+    public const string BASE_PHPUNIT_FILE = __DIR__
         .DIRECTORY_SEPARATOR
         .'..'
         .DIRECTORY_SEPARATOR

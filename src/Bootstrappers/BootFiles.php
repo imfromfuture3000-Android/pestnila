@@ -24,7 +24,7 @@ final class BootFiles implements Bootstrapper
      *
      * @var array<int, string>
      */
-    private const STRUCTURE = [
+    private const array STRUCTURE = [
         'Expectations',
         'Expectations.php',
         'Helpers',
