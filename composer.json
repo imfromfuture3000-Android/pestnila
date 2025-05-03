@@ -18,17 +18,17 @@
     ],
     "require": {
         "php": "^8.3.0",
-        "brianium/paratest": "^7.9.1",
+        "brianium/paratest": "^7.10.1",
         "nunomaduro/collision": "^8.8.0",
         "nunomaduro/termwind": "^2.3.0",
         "pestphp/pest-plugin": "^4.0.0",
         "pestphp/pest-plugin-arch": "^4.0.0",
         "pestphp/pest-plugin-mutate": "^4.0.0",
-        "phpunit/phpunit": "^12.1.3"
+        "phpunit/phpunit": "^12.1.4"
     },
     "conflict": {
         "filp/whoops": "<2.16.0",
-        "phpunit/phpunit": ">12.1.3",
+        "phpunit/phpunit": ">12.1.4",
         "sebastian/exporter": "<7.0.0",
         "webmozart/assert": "<1.11.0"
     },
