@@ -470,7 +470,7 @@ trait Testable
      */
     public static function getLatestPrintableTestCaseMethodName(): string
     {
-        return self::$__latestDescription;
+        return self::$__latestDescription ?? '';
     }
 
     /**
