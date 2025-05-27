@@ -25,11 +25,11 @@
         "pestphp/pest-plugin": "^4.0.0",
         "pestphp/pest-plugin-arch": "^4.0.0",
         "pestphp/pest-plugin-mutate": "^4.0.0",
-        "phpunit/phpunit": "^12.1.4"
+        "phpunit/phpunit": "^12.1.6"
     },
     "conflict": {
         "filp/whoops": "<2.16.0",
-        "phpunit/phpunit": ">12.1.4",
+        "phpunit/phpunit": ">12.1.6",
         "sebastian/exporter": "<7.0.0",
         "webmozart/assert": "<1.11.0"
     },
