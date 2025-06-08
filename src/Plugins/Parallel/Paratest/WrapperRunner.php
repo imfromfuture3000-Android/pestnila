@@ -17,6 +17,7 @@ use ParaTest\WrapperRunner\WrapperWorker;
 use Pest\Result;
 use Pest\TestSuite;
 use PHPUnit\Event\Facade as EventFacade;
+use PHPUnit\Event\Test\AfterLastTestMethodFailed;
 use PHPUnit\Event\TestRunner\WarningTriggered;
 use PHPUnit\Runner\CodeCoverage;
 use PHPUnit\Runner\ResultCache\DefaultResultCache;
@@ -313,12 +314,15 @@ final class WrapperRunner implements RunnerInterface
             $testResult = unserialize($contents);
             assert($testResult instanceof TestResult);
 
+            /** @var list<AfterLastTestMethodFailed> $failedEvents */
+            $failedEvents = array_merge_recursive($testResultSum->testFailedEvents(), $testResult->testFailedEvents());
+
             $testResultSum = new TestResult(
                 (int) $testResultSum->hasTests() + (int) $testResult->hasTests(),
                 $testResultSum->numberOfTestsRun() + $testResult->numberOfTestsRun(),
                 $testResultSum->numberOfAssertions() + $testResult->numberOfAssertions(),
                 array_merge_recursive($testResultSum->testErroredEvents(), $testResult->testErroredEvents()),
-                array_merge_recursive($testResultSum->testFailedEvents(), $testResult->testFailedEvents()),
+                $failedEvents,
                 array_merge_recursive($testResultSum->testConsideredRiskyEvents(), $testResult->testConsideredRiskyEvents()),
                 array_merge_recursive($testResultSum->testSuiteSkippedEvents(), $testResult->testSuiteSkippedEvents()),
                 array_merge_recursive($testResultSum->testSkippedEvents(), $testResult->testSkippedEvents()),

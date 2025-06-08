@@ -68,13 +68,23 @@
   ✓ it adds coverage if --min exist
   ✓ it generates coverage based on file input
 
-   PASS  Tests\Features\Covers
+   PASS  Tests\Features\Covers\ClassCoverage
   ✓ it uses the correct PHPUnit attribute for class
-  ✓ it uses the correct PHPUnit attribute for function
-  ✓ it guesses if the given argument is a class or function
-  ✓ it uses the correct PHPUnit attribute for trait
+
+   PASS  Tests\Features\Covers\CoversNothing
   ✓ it uses the correct PHPUnit attribute for covers nothing
+
+   PASS  Tests\Features\Covers\ExceptionHandling
   ✓ it throws exception if no class nor method has been found
+
+   PASS  Tests\Features\Covers\FunctionCoverage
+  ✓ it uses the correct PHPUnit attribute for function
+
+   PASS  Tests\Features\Covers\GuessCoverage
+  ✓ it guesses if the given argument is a class or function
+
+   PASS  Tests\Features\Covers\TraitCoverage
+  ✓ it uses the correct PHPUnit attribute for trait
 
    PASS  Tests\Features\DatasetsTests - 1 todo
   ✓ it throws exception if dataset does not exist

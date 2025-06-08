@@ -100,10 +100,12 @@
   --testdox ................ Replace default result output with TestDox format  
   --testdox-summary  Repeat TestDox output for tests with errors, failures, or issues  
   --debug  Replace default progress and result output with debugging information  
+  --with-telemetry  Include telemetry information in debugging information output  
   --compact ................ Replace default result output with Compact format  
 
   LOGGING OPTIONS:
   --log-junit [file] .......... Write test results in JUnit XML format to file  
+  --log-otr [file]  Write test results in Open Test Reporting XML format to file  
   --log-teamcity [file] ........ Write test results in TeamCity format to file  
   --testdox-html [file] .. Write test results in TestDox format (HTML) to file  
   --testdox-text [file]  Write test results in TestDox format (plain text) to file  
@@ -115,6 +117,7 @@
   --coverage ..... Generate code coverage report and output to standard output  
   --coverage --min  Set the minimum required coverage percentage, and fail if not met  
   --coverage-clover [file]  Write code coverage report in Clover XML format to file  
+  --coverage-openclover [file]  Write code coverage report in OpenClover XML format to file  
   --coverage-cobertura [file]  Write code coverage report in Cobertura XML format to file  
   --coverage-crap4j [file]  Write code coverage report in Crap4J XML format to file  
   --coverage-html [dir]  Write code coverage report in HTML format to directory  
