@@ -89,8 +89,15 @@ final class Coverage
         }
 
         /** @var CodeCoverage $codeCoverage */
-        $codeCoverage = require $reportPath;
+        $handle = fopen($reportPath, 'r');
+        $code = '';
+        while (! feof($handle)) {
+            $code .= fread($handle, 8192);
+        }
+        fclose($handle);
         unlink($reportPath);
+
+        $codeCoverage = eval(substr($code, 5));
 
         $totalCoverage = $codeCoverage->getReport()->percentageOfExecutedLines();
 
