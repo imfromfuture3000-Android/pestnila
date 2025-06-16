@@ -88,13 +88,16 @@ final class Coverage
             throw ShouldNotHappen::fromMessage(sprintf('Coverage not found in path: %s.', $reportPath));
         }
 
-        /** @var CodeCoverage $codeCoverage */
         $handle = fopen($reportPath, 'r');
         $code = '';
-        while (! feof($handle)) {
+        while (is_resource($handle) && ! feof($handle)) {
             $code .= fread($handle, 8192);
         }
-        fclose($handle);
+
+        if (is_resource($handle)) {
+            fclose($handle);
+        }
+
         unlink($reportPath);
 
         $codeCoverage = eval(substr($code, 5));
