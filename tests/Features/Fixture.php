@@ -9,3 +9,4 @@ it('may return a file path', function () {
 
 it('may throw an exception if the file does not exist', function () {
     fixture('file-that-does-not-exist.php');
+})->throws(InvalidArgumentException::class);
