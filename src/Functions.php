@@ -278,3 +278,28 @@ if (! function_exists('mutates')) {
         }
     }
 }
+
+if (! function_exists('fixture')) {
+    /**
+     * Returns the absolute path to a fixture file.
+     */
+    function fixture(string $file): string
+    {
+        $file = implode(DIRECTORY_SEPARATOR, [
+            TestSuite::getInstance()->rootPath,
+            TestSuite::getInstance()->testPath,
+            'Fixtures',
+            str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $file),
+        ]);
+
+        $fileRealPath = realpath($file);
+
+        if ($fileRealPath === false) {
+            throw new InvalidArgumentException(
+                'The fixture file ['.$file.'] does not exist.',
+            );
+        }
+
+        return $fileRealPath;
+    }
+}
