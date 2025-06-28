@@ -180,7 +180,7 @@ final class TestCall // @phpstan-ignore-line
     /**
      * Runs the current test multiple times with each item of the given `iterable`.
      *
-     * @param Closure|iterable<array-key, mixed>|string $data
+     * @param  Closure|iterable<array-key, mixed>|string  $data
      */
     public function with(Closure|iterable|string ...$data): self
     {

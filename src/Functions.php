@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
+use Pest\Browser\Api\ArrayablePendingAwaitablePage;
+use Pest\Browser\Api\PendingAwaitablePage;
 use Pest\Concerns\Expectable;
 use Pest\Configuration;
 use Pest\Exceptions\AfterAllWithinDescribe;
 use Pest\Exceptions\BeforeAllWithinDescribe;
 use Pest\Expectation;
+use Pest\Installers\PluginBrowser;
 use Pest\Mutate\Contracts\MutationTestRunner;
 use Pest\Mutate\Repositories\ConfigurationRepository;
 use Pest\PendingCalls\AfterEachCall;
@@ -301,5 +304,28 @@ if (! function_exists('fixture')) {
         }
 
         return $fileRealPath;
+    }
+}
+
+if (! function_exists('visit')) {
+    /**
+     * Browse to the given URL.
+     *
+     * @template TUrl of array<int, string>|string
+     *
+     * @param  TUrl  $url
+     * @param  array<string, mixed>  $options
+     * @return (TUrl is array<int, string> ? ArrayablePendingAwaitablePage : PendingAwaitablePage)
+     */
+    function visit(array|string $url, array $options = []): ArrayablePendingAwaitablePage|PendingAwaitablePage
+    {
+        if (! class_exists(\Pest\Browser\Configuration::class)) {
+            PluginBrowser::install();
+
+            exit(0);
+        }
+
+        // @phpstan-ignore-next-line
+        return test()->visit($url, $options);
     }
 }
