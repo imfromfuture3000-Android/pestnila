@@ -1040,6 +1040,10 @@
   ✓ it may fail
   ✓ it may fail with the given message
 
+   PASS  Tests\Features\Fixture
+  ✓ it may return a file path
+  ✓ it may throw an exception if the file does not exist
+
    WARN  Tests\Features\Helpers
   ✓ it can set/get properties on $this
   ! it gets null if property do not exist → Undefined property Tests\Features\Helpers::$wqdwqdqw
@@ -1708,4 +1712,4 @@
    WARN  Tests\Visual\Version
   - visual snapshot of help command output
 
-  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1144 passed (2736 assertions)
+  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1146 passed (2739 assertions)
