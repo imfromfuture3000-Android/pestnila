@@ -29,6 +29,7 @@ jobs:
         php-version: ${{ matrix.php }}
         tools: composer:v2
         coverage: none
+        extensions: sockets
 
     - name: Setup Problem Matches
       run: |
