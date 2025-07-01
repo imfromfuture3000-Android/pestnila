@@ -7,6 +7,7 @@ namespace Pest\Plugins;
 use Pest\Contracts\Plugins\HandlesArguments;
 use Pest\Exceptions\InvalidOption;
 use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Process\Process;
 
 /**
@@ -35,28 +36,7 @@ final class Shard implements HandlesArguments
         // @phpstan-ignore-next-line
         $input = new ArgvInput($arguments);
 
-        if ($input->hasParameterOption('--'.self::SHARD_OPTION)) {
-            $shard = $input->getParameterOption('--'.self::SHARD_OPTION);
-        } else {
-            $shard = null;
-        }
-
-        if (! is_string($shard) || ! preg_match('/^\d+\/\d+$/', $shard)) {
-            throw new InvalidOption('The [--shard] option must be in the format "index/total".');
-        }
-
-        [$index, $total] = explode('/', $shard);
-
-        if (! is_numeric($index) || ! is_numeric($total)) {
-            throw new InvalidOption('The [--shard] option must be in the format "index/total".');
-        }
-
-        if ($index <= 0 || $total <= 0 || $index > $total) {
-            throw new InvalidOption('The [--shard] option index must be a non-negative integer less than the total number of shards.');
-        }
-
-        $index = (int) $index;
-        $total = (int) $total;
+        ['index' => $index, 'total' => $total] = self::getShard($input);
 
         $arguments = $this->popArgument("--shard=$index/$total", $this->popArgument('--shard', $this->popArgument(
             "$index/$total",
@@ -104,5 +84,41 @@ final class Shard implements HandlesArguments
     private function buildFilterArgument(mixed $testsToRun): string
     {
         return addslashes(implode('|', $testsToRun));
+    }
+
+    /**
+     * Returns the shard information.
+     *
+     * @return array{index: int, total: int}
+     */
+    public static function getShard(InputInterface $input): array
+    {
+        if ($input->hasParameterOption('--'.self::SHARD_OPTION)) {
+            $shard = $input->getParameterOption('--'.self::SHARD_OPTION);
+        } else {
+            $shard = null;
+        }
+
+        if (! is_string($shard) || ! preg_match('/^\d+\/\d+$/', $shard)) {
+            throw new InvalidOption('The [--shard] option must be in the format "index/total".');
+        }
+
+        [$index, $total] = explode('/', $shard);
+
+        if (! is_numeric($index) || ! is_numeric($total)) {
+            throw new InvalidOption('The [--shard] option must be in the format "index/total".');
+        }
+
+        if ($index <= 0 || $total <= 0 || $index > $total) {
+            throw new InvalidOption('The [--shard] option index must be a non-negative integer less than the total number of shards.');
+        }
+
+        $index = (int) $index;
+        $total = (int) $total;
+
+        return [
+            'index' => $index,
+            'total' => $total,
+        ];
     }
 }
