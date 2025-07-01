@@ -84,7 +84,7 @@ final class Shard implements HandlesArguments
             '--list-tests',
         ]))->mustRun()->getOutput();
 
-        preg_match_all('/ - (?:P\\\)?(.+)::/', $output, $matches);
+        preg_match_all('/ - (?:P\\\\)?(Tests\\\\[^:]+)::/', $output, $matches);
 
         return array_values(array_unique($matches[1]));
     }
