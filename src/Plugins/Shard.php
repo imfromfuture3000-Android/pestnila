@@ -4,25 +4,43 @@ declare(strict_types=1);
 
 namespace Pest\Plugins;
 
+use Pest\Contracts\Plugins\AddsOutput;
 use Pest\Contracts\Plugins\HandlesArguments;
 use Pest\Exceptions\InvalidOption;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
 /**
  * @internal
  */
-final class Shard implements HandlesArguments
+final class Shard implements AddsOutput, HandlesArguments
 {
     use Concerns\HandleArguments;
 
     private const string SHARD_OPTION = 'shard';
 
     /**
-     * The total number of tests.
+     * The shard index and total number of shards.
+     *
+     * @var array{
+     *     index: int,
+     *     total: int,
+     *     testsRan: int,
+     *     testsCount: int
+     * }|null
      */
-    public static int $testsCount = 0;
+    private static ?array $shard = null;
+
+    /**
+     * Creates a new Plugin instance.
+     */
+    public function __construct(
+        private readonly OutputInterface $output,
+    ) {
+        //
+    }
 
     /**
      * {@inheritDoc}
@@ -46,6 +64,13 @@ final class Shard implements HandlesArguments
         /** @phpstan-ignore-next-line */
         $tests = $this->allTests($arguments);
         $testsToRun = (array_chunk($tests, max(1, (int) ceil(count($tests) / $total))))[$index - 1] ?? [];
+
+        self::$shard = [
+            'index' => $index,
+            'total' => $total,
+            'testsRan' => count($testsToRun),
+            'testsCount' => count($tests),
+        ];
 
         return [...$arguments, '--filter', $this->buildFilterArgument($testsToRun)];
     }
@@ -84,6 +109,34 @@ final class Shard implements HandlesArguments
     private function buildFilterArgument(mixed $testsToRun): string
     {
         return addslashes(implode('|', $testsToRun));
+    }
+
+    /**
+     * Adds output after the Test Suite execution.
+     */
+    public function addOutput(int $exitCode): int
+    {
+        if (self::$shard === null) {
+            return $exitCode;
+        }
+
+        [
+            'index' => $index,
+            'total' => $total,
+            'testsRan' => $testsRan,
+            'testsCount' => $testsCount,
+        ] = self::$shard;
+
+        $this->output->writeln(sprintf(
+            '  <fg=gray>Shard:</>    <fg=default>%d of %d</> — %d file%s ran, out of %d.',
+            $index,
+            $total,
+            $testsRan,
+            $testsRan === 1 ? '' : 's',
+            $testsCount,
+        ));
+
+        return $exitCode;
     }
 
     /**

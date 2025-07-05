@@ -73,9 +73,9 @@
     ],
     "scripts": {
         "refacto": "rector",
-        "lint": "pint",
+        "lint": "pint --parallel",
         "test:refacto": "rector --dry-run",
-        "test:lint": "pint --test",
+        "test:lint": "pint --parallel --test",
         "test:profanity": "php bin/pest --profanity --compact --language=en",
         "test:type:check": "phpstan analyse --ansi --memory-limit=-1 --debug",
         "test:type:coverage": "php -d memory_limit=-1  bin/pest --type-coverage --min=100",
