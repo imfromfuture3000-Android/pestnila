@@ -37,6 +37,7 @@ arch('dependencies')
         'Termwind',
         'ParaTest',
         'Pest\Arch',
+        'Pest\Browser',
         'Pest\Mutate\Contracts\Configuration',
         'Pest\Mutate\Decorators\TestCallDecorator',
         'Pest\Mutate\Repositories\ConfigurationRepository',

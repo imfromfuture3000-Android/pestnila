@@ -438,15 +438,7 @@ trait Testable
             return;
         }
 
-        if (count($this->__snapshotChanges) === 1) {
-            $this->markTestIncomplete($this->__snapshotChanges[0]);
-
-            return;
-        }
-
-        $messages = implode(PHP_EOL, array_map(static fn (string $message): string => '- $message', $this->__snapshotChanges));
-
-        $this->markTestIncomplete($messages);
+        $this->markTestIncomplete(implode('. ', $this->__snapshotChanges));
     }
 
     /**
