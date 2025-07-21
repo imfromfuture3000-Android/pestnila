@@ -10,6 +10,7 @@ use Pest\Preset;
 use Pest\Support\ChainableClosure;
 use Pest\Support\ExceptionTrace;
 use Pest\Support\Reflection;
+use Pest\Support\Shell;
 use Pest\TestSuite;
 use PHPUnit\Framework\Attributes\PostCondition;
 use PHPUnit\Framework\TestCase;
@@ -476,5 +477,13 @@ trait Testable
             'prs' => self::$__latestPrs,
             'notes' => self::$__latestNotes,
         ];
+    }
+
+    /**
+     * Opens a shell for the test case.
+     */
+    public function shell(): void
+    {
+        Shell::open();
     }
 }
