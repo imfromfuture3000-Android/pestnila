@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Pest\Support;
 
-use Composer\Autoload\ClassLoader;
 use Illuminate\Support\Env;
 use Laravel\Tinker\ClassAliasAutoloader;
+use Pest\TestSuite;
 use Psy\Configuration;
 use Psy\Shell as PsyShell;
 use Psy\VersionUpdater\Checker;
@@ -34,7 +34,7 @@ final class Shell
         try {
             $shell->run();
         } finally {
-            $loader?->unregister();
+            $loader?->unregister(); // @phpstan-ignore-line
         }
     }
 
@@ -75,7 +75,7 @@ final class Shell
     /**
      * Tinkers the current shell, if the Tinker package is available.
      */
-    private static function tinkered(PsyShell $shell): ?ClassLoader
+    private static function tinkered(PsyShell $shell): ?object
     {
         if (function_exists('app') === false
             || ! class_exists(Env::class)
@@ -87,6 +87,10 @@ final class Shell
         $path = Env::get('COMPOSER_VENDOR_DIR', app()->basePath().DIRECTORY_SEPARATOR.'vendor');
 
         $path .= '/composer/autoload_classmap.php';
+
+        if (! file_exists($path)) {
+            $path = TestSuite::getInstance()->rootPath.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'composer'.DIRECTORY_SEPARATOR.'autoload_classmap.php';
+        }
 
         $config = app()->make('config');
 
