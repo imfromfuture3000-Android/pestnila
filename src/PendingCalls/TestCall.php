@@ -340,7 +340,7 @@ final class TestCall // @phpstan-ignore-line
             'NETLIFY',
             'NOW_BUILDER',
         ] as $env) {
-            if (isset($_ENV[$env])) {
+            if (getenv('GITHUB_ACTIONS') !== false) {
                 return $this->skip(sprintf(
                     'This test is skipped on [CI].',
                 ));
