@@ -12,6 +12,11 @@
 
     <div>
         <span class="text-gray mr-1">- </span>
+        <span>npm install playwright@latest</span>
+    </div>
+
+    <div>
+        <span class="text-gray mr-1">- </span>
         <span>npx playwright install</span>
     </div>
 </div>
