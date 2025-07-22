@@ -316,9 +316,9 @@ final class TestCall // @phpstan-ignore-line
     }
 
     /**
-     * Skips the current test when running on a CI environments.
+     * Weather the current test is running on a CI environment.
      */
-    public function skipOnCI(): self
+    private function runningOnCI(): bool
     {
         foreach ([
             'CI',
@@ -341,16 +341,33 @@ final class TestCall // @phpstan-ignore-line
             'NETLIFY',
             'NOW_BUILDER',
         ] as $env) {
-            if (getenv('GITHUB_ACTIONS') !== false) {
-                return $this->skip(sprintf(
-                    'This test is skipped on [CI].',
-                ));
+            if (getenv($env) !== false) {
+                return true;
             }
         }
 
-        if (Environment::name() === Environment::CI) {
+        return Environment::name() === Environment::CI;
+    }
+
+    /**
+     * Skips the current test when running on a CI environments.
+     */
+    public function skipOnCI(): self
+    {
+        if ($this->runningOnCI()) {
             return $this->skip(sprintf(
                 'This test is skipped on [CI].',
+            ));
+        }
+
+        return $this;
+    }
+
+    public function skipLocally(): self
+    {
+        if ($this->runningOnCI() === false) {
+            return $this->skip(sprintf(
+                'This test is skipped [locally].',
             ));
         }
 
