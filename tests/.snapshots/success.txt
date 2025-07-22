@@ -4,7 +4,6 @@
   ✓ preset → strict → ignoring ['usleep']
   ✓ preset → security → ignoring ['eval', 'str_shuffle', 'exec', …]
   ✓ globals
-  ✓ dependencies
   ✓ contracts
 
    PASS  Tests\Environments\Windows
@@ -1133,6 +1132,10 @@
   ✓ nested → it may be associated with an pr #1, #4, #5, #6, #3
   // an note between an the pr
 
+   PASS  Tests\Features\References
+  ✓ it can reference a specific class
+  ✓ it can reference a specific class method
+
    PASS  Tests\Features\Repeat
   ✓ once
   ✓ multiple times @ repetition 1 of 5
@@ -1308,6 +1311,10 @@
   ✓ it can see datasets defined in Pest.php file with ('A')
   ✓ it can see datasets defined in Pest.php file with ('B')
   ✓ Pest.php dataset is taken
+
+   PASS  Tests\Features\See
+  ✓ it can reference a specific class
+  ✓ it can reference a specific class method
 
    WARN  Tests\Features\Skip
   ✓ it do not skips
@@ -1712,4 +1719,4 @@
    WARN  Tests\Visual\Version
   - visual snapshot of help command output
 
-  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1146 passed (2739 assertions)
+  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1149 passed (2742 assertions)

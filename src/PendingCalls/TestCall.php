@@ -689,6 +689,17 @@ final class TestCall // @phpstan-ignore-line
     }
 
     /**
+     * Adds one or more references to the tested method or class. This helps
+     * to link test cases to the source code for easier navigation.
+     *
+     * @param  array<class-string|string>|class-string  ...$classes
+     */
+    public function see(string|array ...$classes): self
+    {
+        return $this->references(...$classes);
+    }
+
+    /**
      * Informs the test runner that no expectations happen in this test,
      * and its purpose is simply to check whether the given code can
      * be executed without throwing exceptions.
