@@ -315,6 +315,42 @@ final class TestCall // @phpstan-ignore-line
     }
 
     /**
+     * Skips the current test when running on a CI environments.
+     */
+    public function skipOnCI(): self
+    {
+        foreach ([
+            'CI',
+            'GITHUB_ACTIONS',
+            'GITLAB_CI',
+            'CIRCLECI',
+            'TRAVIS',
+            'APPVEYOR',
+            'BITBUCKET_BUILD_NUMBER',
+            'BUILDKITE',
+            'TEAMCITY_VERSION',
+            'JENKINS_URL',
+            'SYSTEM_COLLECTIONURI',
+            'CI_NAME',
+            'TASKCLUSTER_ROOT_URL',
+            'DRONE',
+            'WERCKER',
+            'NEVERCODE',
+            'SEMAPHORE',
+            'NETLIFY',
+            'NOW_BUILDER',
+        ] as $env) {
+            if (isset($_ENV[$env])) {
+                return $this->skip(sprintf(
+                    'This test is skipped on [CI].',
+                ));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * Skips the current test unless the given test is running on Windows.
      */
     public function onlyOnWindows(): self
