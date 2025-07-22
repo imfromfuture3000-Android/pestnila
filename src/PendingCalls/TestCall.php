@@ -355,9 +355,7 @@ final class TestCall // @phpstan-ignore-line
     public function skipOnCI(): self
     {
         if ($this->runningOnCI()) {
-            return $this->skip(sprintf(
-                'This test is skipped on [CI].',
-            ));
+            return $this->skip('This test is skipped on [CI].');
         }
 
         return $this;
@@ -366,9 +364,7 @@ final class TestCall // @phpstan-ignore-line
     public function skipLocally(): self
     {
         if ($this->runningOnCI() === false) {
-            return $this->skip(sprintf(
-                'This test is skipped [locally].',
-            ));
+            return $this->skip('This test is skipped [locally].');
         }
 
         return $this;

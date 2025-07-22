@@ -94,10 +94,8 @@ final class Shell
 
         $config = app()->make('config');
 
-        $loader = ClassAliasAutoloader::register(
+        return ClassAliasAutoloader::register(
             $shell, $path, $config->get('tinker.alias', []), $config->get('tinker.dont_alias', [])
         );
-
-        return $loader;
     }
 }

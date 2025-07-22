@@ -125,6 +125,6 @@ final class Str
     {
         $target = preg_replace('/[^a-zA-Z0-9]+/', '-', $target);
 
-        return strtolower(trim($target, '-'));
+        return strtolower(trim((string) $target, '-'));
     }
 }
