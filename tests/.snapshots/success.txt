@@ -630,6 +630,13 @@
   ✓ failures with custom message
   ✓ not failures
 
+   PASS  Tests\Features\Expect\toBeSlug
+  ✓ pass
+  ✓ failures
+  ✓ failures with custom message
+  ✓ failures with default message
+  ✓ not failures
+
    PASS  Tests\Features\Expect\toBeSnakeCase
   ✓ pass
   ✓ failures
@@ -1719,4 +1726,4 @@
    WARN  Tests\Visual\Version
   - visual snapshot of help command output
 
-  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1149 passed (2742 assertions)
+  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1154 passed (2754 assertions)

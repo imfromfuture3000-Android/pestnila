@@ -660,7 +660,7 @@ final class Expectation
     {
         foreach ($keys as $k => $key) {
             if (is_array($key)) {
-                $this->toHaveKeys(array_keys(Arr::dot($key, $k . '.')), $message);
+                $this->toHaveKeys(array_keys(Arr::dot($key, $k.'.')), $message);
             } else {
                 $this->toHaveKey($key, message: $message);
             }

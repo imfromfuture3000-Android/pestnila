@@ -58,7 +58,7 @@ final class Str
     {
         $code = str_replace('_', '__', $code);
 
-        $code = self::PREFIX . str_replace(' ', '_', $code);
+        $code = self::PREFIX.str_replace(' ', '_', $code);
 
         // sticks to PHP8.2 function naming rules https://www.php.net/manual/en/functions.user-defined.php
         return (string) preg_replace('/[^a-zA-Z0-9_\x80-\xff]/', '_', $code);
@@ -124,6 +124,7 @@ final class Str
     public static function slugify(string $target): string
     {
         $target = preg_replace('/[^a-zA-Z0-9]+/', '-', $target);
+
         return strtolower(trim($target, '-'));
     }
 }
