@@ -12,6 +12,7 @@ use Pest\Factories\Attribute;
 use Pest\Factories\TestCaseMethodFactory;
 use Pest\Mutate\Repositories\ConfigurationRepository;
 use Pest\PendingCalls\Concerns\Describable;
+use Pest\Plugins\Environment;
 use Pest\Plugins\Only;
 use Pest\Support\Backtrace;
 use Pest\Support\Container;
@@ -345,6 +346,12 @@ final class TestCall // @phpstan-ignore-line
                     'This test is skipped on [CI].',
                 ));
             }
+        }
+
+        if (Environment::name() === Environment::CI) {
+            return $this->skip(sprintf(
+                'This test is skipped on [CI].',
+            ));
         }
 
         return $this;
