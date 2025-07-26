@@ -15,7 +15,7 @@ final readonly class Exporter
     /**
      * The maximum number of items in an array to export.
      */
-    private const MAX_ARRAY_ITEMS = 3;
+    private const int MAX_ARRAY_ITEMS = 3;
 
     /**
      * Creates a new Exporter instance.
@@ -66,6 +66,7 @@ final readonly class Exporter
 
             $result[] = $context->contains($data[$key]) !== false
                 ? '*RECURSION*'
+                // @phpstan-ignore-next-line
                 : sprintf('[%s]', $this->shortenedRecursiveExport($data[$key], $context));
         }
 

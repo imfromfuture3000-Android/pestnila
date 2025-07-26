@@ -183,7 +183,6 @@ final class Expectation
     {
         foreach ($needles as $needle) {
             if (is_string($this->value)) {
-                // @phpstan-ignore-next-line
                 Assert::assertStringContainsString((string) $needle, $this->value);
             } else {
                 if (! is_iterable($this->value)) {
@@ -1156,6 +1155,23 @@ final class Expectation
         }
 
         Assert::assertTrue(Str::isUrl((string) $this->value), $message);
+
+        return $this;
+    }
+
+    /**
+     * Asserts that the value can be converted to a slug
+     *
+     * @return self<TValue>
+     */
+    public function toBeSlug(string $message = ''): self
+    {
+        if ($message === '') {
+            $message = "Failed asserting that {$this->value} can be converted to a slug.";
+        }
+
+        $slug = Str::slugify((string) $this->value);
+        Assert::assertNotEmpty($slug, $message);
 
         return $this;
     }

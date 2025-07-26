@@ -27,26 +27,6 @@ arch('globals')
     ->not->toBeUsed()
     ->ignoring(Expectation::class);
 
-arch('dependencies')
-    ->expect('Pest')
-    ->toOnlyUse([
-        'dd',
-        'dump',
-        'expect',
-        'uses',
-        'Termwind',
-        'ParaTest',
-        'Pest\Arch',
-        'Pest\Mutate\Contracts\Configuration',
-        'Pest\Mutate\Decorators\TestCallDecorator',
-        'Pest\Mutate\Repositories\ConfigurationRepository',
-        'Pest\Plugin',
-        'NunoMaduro\Collision',
-        'Whoops',
-        'Symfony\Component\Console',
-        'Symfony\Component\Process',
-    ])->ignoring(['Composer', 'PHPUnit', 'SebastianBergmann']);
-
 arch('contracts')
     ->expect('Pest\Contracts')
     ->toOnlyUse([
