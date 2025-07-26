@@ -35,7 +35,8 @@ final class Laravel extends AbstractPreset
             ->ignoring('App\Features\Concerns');
 
         $this->expectations[] = expect('App\Features')
-            ->toHaveMethod('resolve');
+            ->toHaveMethod('resolve')
+            ->ignoring('App\Features\Concerns');
 
         $this->expectations[] = expect('App\Exceptions')
             ->classes()
