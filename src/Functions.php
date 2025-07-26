@@ -21,6 +21,7 @@ use Pest\Repositories\DatasetsRepository;
 use Pest\Support\Backtrace;
 use Pest\Support\Container;
 use Pest\Support\DatasetInfo;
+use Pest\Support\Description;
 use Pest\Support\HigherOrderTapProxy;
 use Pest\TestSuite;
 use PHPUnit\Framework\TestCase;
@@ -98,7 +99,7 @@ if (! function_exists('describe')) {
     {
         $filename = Backtrace::testFile();
 
-        return new DescribeCall(TestSuite::getInstance(), $filename, $description, $tests);
+        return new DescribeCall(TestSuite::getInstance(), $filename, new Description($description), $tests);
     }
 }
 
