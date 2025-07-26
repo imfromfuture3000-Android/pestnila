@@ -1453,6 +1453,11 @@
   ✓ nested → nested afterEach execution order
   ✓ global afterEach execution order
 
+   PASS  Tests\Hooks\BeforeAllTest
+  ✓ it gets called before all tests 1 @ repetition 1 of 2
+  ✓ it gets called before all tests 1 @ repetition 2 of 2
+  ✓ it gets called before all tests 2
+
    PASS  Tests\Hooks\BeforeEachTest
   ✓ global beforeEach execution order
 
@@ -1726,4 +1731,4 @@
    WARN  Tests\Visual\Version
   - visual snapshot of help command output
 
-  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1154 passed (2754 assertions)
+  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1157 passed (2766 assertions)

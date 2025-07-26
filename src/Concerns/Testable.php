@@ -6,6 +6,7 @@ namespace Pest\Concerns;
 
 use Closure;
 use Pest\Exceptions\DatasetArgumentsMismatch;
+use Pest\Panic;
 use Pest\Preset;
 use Pest\Support\ChainableClosure;
 use Pest\Support\ExceptionTrace;
@@ -194,7 +195,11 @@ trait Testable
             $beforeAll = ChainableClosure::boundStatically(self::$__beforeAll, $beforeAll);
         }
 
-        call_user_func(Closure::bind($beforeAll, null, self::class));
+        try {
+            call_user_func(Closure::bind($beforeAll, null, self::class));
+        } catch (Throwable $e) {
+            Panic::with($e);
+        }
     }
 
     /**
@@ -221,8 +226,6 @@ trait Testable
         TestSuite::getInstance()->test = $this;
 
         $method = TestSuite::getInstance()->tests->get(self::$__filename)->getMethod($this->name());
-
-        $method->setUp($this);
 
         $description = $method->description;
         if ($this->dataName()) {
@@ -287,6 +290,8 @@ trait Testable
             self::$__latestPrs = $method->prs;
             $this->__describing = $method->describing;
             $this->__test = $method->getClosure();
+
+            $method->setUp($this);
         }
     }
 
