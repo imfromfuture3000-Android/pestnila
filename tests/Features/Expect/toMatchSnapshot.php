@@ -74,7 +74,8 @@ test('pass with dataset', function ($data) {
     TestSuite::getInstance()->snapshots->save($this->snapshotable);
     [$filename] = TestSuite::getInstance()->snapshots->get();
 
-    expect($filename)->toEndWith('pass_with_dataset_with_data_set____my_datas_set_value______my_datas_set_value__.snap')
+    expect($filename)->toStartWith('tests/.pest/snapshots/')
+        ->toEndWith('pass_with_dataset_with_data_set____my_datas_set_value______my_datas_set_value__.snap')
         ->and($this->snapshotable)->toMatchSnapshot();
 })->with(['my-datas-set-value']);
 
@@ -83,7 +84,8 @@ describe('within describe', function () {
         TestSuite::getInstance()->snapshots->save($this->snapshotable);
         [$filename] = TestSuite::getInstance()->snapshots->get();
 
-        expect($filename)->toEndWith('pass_with_dataset_with_data_set____my_datas_set_value______my_datas_set_value__.snap')
+        expect($filename)->toStartWith('tests/.pest/snapshots/')
+            ->toEndWith('pass_with_dataset_with_data_set____my_datas_set_value______my_datas_set_value__.snap')
             ->and($this->snapshotable)->toMatchSnapshot();
     });
 })->with(['my-datas-set-value']);

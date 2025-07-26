@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Pest\Support;
 
 use Pest\Exceptions\ShouldNotHappen;
-use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Node\Directory;
 use SebastianBergmann\CodeCoverage\Node\File;
 use SebastianBergmann\Environment\Runtime;
@@ -74,7 +73,7 @@ final class Coverage
      * Reports the code coverage report to the
      * console and returns the result in float.
      */
-    public static function report(OutputInterface $output): float
+    public static function report(OutputInterface $output, bool $compact = false): float
     {
         if (! file_exists($reportPath = self::getPath())) {
             if (self::usingXdebug()) {
@@ -88,9 +87,19 @@ final class Coverage
             throw ShouldNotHappen::fromMessage(sprintf('Coverage not found in path: %s.', $reportPath));
         }
 
-        /** @var CodeCoverage $codeCoverage */
-        $codeCoverage = require $reportPath;
+        $handle = fopen($reportPath, 'r');
+        $code = '';
+        while (is_resource($handle) && ! feof($handle)) {
+            $code .= fread($handle, 8192);
+        }
+
+        if (is_resource($handle)) {
+            fclose($handle);
+        }
+
         unlink($reportPath);
+
+        $codeCoverage = eval(substr($code, 5));
 
         $totalCoverage = $codeCoverage->getReport()->percentageOfExecutedLines();
 
@@ -112,6 +121,10 @@ final class Coverage
             $percentage = $file->numberOfExecutableLines() === 0
                 ? '100.0'
                 : number_format($file->percentageOfExecutedLines()->asFloat(), 1, '.', '');
+
+            if ($percentage === '100.0' && $compact) {
+                continue;
+            }
 
             $uncoveredLines = '';
 

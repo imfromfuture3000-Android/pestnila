@@ -4,7 +4,6 @@
   ✓ preset → strict → ignoring ['usleep']
   ✓ preset → security → ignoring ['eval', 'str_shuffle', 'exec', …]
   ✓ globals
-  ✓ dependencies
   ✓ contracts
 
    PASS  Tests\Environments\Windows
@@ -81,13 +80,23 @@
   ✓ it adds coverage if --min exist
   ✓ it generates coverage based on file input
 
-   PASS  Tests\Features\Covers
+   PASS  Tests\Features\Covers\ClassCoverage
   ✓ it uses the correct PHPUnit attribute for class
-  ✓ it uses the correct PHPUnit attribute for function
-  ✓ it guesses if the given argument is a class or function
-  ✓ it uses the correct PHPUnit attribute for trait
+
+   PASS  Tests\Features\Covers\CoversNothing
   ✓ it uses the correct PHPUnit attribute for covers nothing
+
+   PASS  Tests\Features\Covers\ExceptionHandling
   ✓ it throws exception if no class nor method has been found
+
+   PASS  Tests\Features\Covers\FunctionCoverage
+  ✓ it uses the correct PHPUnit attribute for function
+
+   PASS  Tests\Features\Covers\GuessCoverage
+  ✓ it guesses if the given argument is a class or function
+
+   PASS  Tests\Features\Covers\TraitCoverage
+  ✓ it uses the correct PHPUnit attribute for trait
 
    PASS  Tests\Features\DatasetsTests - 1 todo
   ✓ it throws exception if dataset does not exist
@@ -639,6 +648,13 @@
   ✓ failures with custom message
   ✓ not failures
 
+   PASS  Tests\Features\Expect\toBeSlug
+  ✓ pass
+  ✓ failures
+  ✓ failures with custom message
+  ✓ failures with default message
+  ✓ not failures
+
    PASS  Tests\Features\Expect\toBeSnakeCase
   ✓ pass
   ✓ failures
@@ -1048,6 +1064,10 @@
   ✓ it may fail
   ✓ it may fail with the given message
 
+   PASS  Tests\Features\Fixture
+  ✓ it may return a file path
+  ✓ it may throw an exception if the file does not exist
+
    WARN  Tests\Features\Helpers
   ✓ it can set/get properties on $this
   ! it gets null if property do not exist → Undefined property Tests\Features\Helpers::$wqdwqdqw
@@ -1155,6 +1175,10 @@
   ✓ it may be associated with an pr #1, #2
   ✓ nested → it may be associated with an pr #1, #4, #5, #6, #3
   // an note between an the pr
+
+   PASS  Tests\Features\References
+  ✓ it can reference a specific class
+  ✓ it can reference a specific class method
 
    PASS  Tests\Features\Repeat
   ✓ once
@@ -1336,6 +1360,10 @@
   ✓ it can see datasets defined in Pest.php file with ('B')
   ✓ Pest.php dataset is taken
 
+   PASS  Tests\Features\See
+  ✓ it can reference a specific class
+  ✓ it can reference a specific class method
+
    WARN  Tests\Features\Skip
   ✓ it do not skips
   - it skips with truthy → 1
@@ -1475,18 +1503,13 @@
   ✓ nested → nested afterEach execution order
   ✓ global afterEach execution order
 
+   PASS  Tests\Hooks\BeforeAllTest
+  ✓ it gets called before all tests 1 @ repetition 1 of 2
+  ✓ it gets called before all tests 1 @ repetition 2 of 2
+  ✓ it gets called before all tests 2
+
    PASS  Tests\Hooks\BeforeEachTest
   ✓ global beforeEach execution order
-
-   PASS  Tests\Overrides\VersionsTest
-  ✓ versions with dataset "Runner/Filter/NameFilterIterator.php"
-  ✓ versions with dataset "Runner/ResultCache/DefaultResultCache.php"
-  ✓ versions with dataset "Runner/TestSuiteLoader.php"
-  ✓ versions with dataset "TextUI/Command/Commands/WarmCodeCoverageCacheCommand.php"
-  ✓ versions with dataset "TextUI/Output/Default/ProgressPrinter/Subscriber/TestSkippedSubscriber.php"
-  ✓ versions with dataset "TextUI/TestSuiteFilterProcessor.php"
-  ✓ versions with dataset "Event/Value/ThrowableBuilder.php"
-  ✓ versions with dataset "Logging/JUnit/JunitXmlLogger.php"
 
    PASS  Tests\PHPUnit\CustomAffixes\InvalidTestName
   ✓ it runs file names like @#$%^&()-_=+.php
@@ -1758,4 +1781,9 @@
    WARN  Tests\Visual\Version
   - visual snapshot of help command output
 
-  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 39 todos, 35 skipped, 1182 passed (2785 assertions)
+   PASS  Testsexternal\Features\Expect\toMatchSnapshot
+  ✓ pass with dataset with ('my-datas-set-value')
+  ✓ within describe → pass with dataset with ('my-datas-set-value')
+
+  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1159 passed (2774 assertions)
+

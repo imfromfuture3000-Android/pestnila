@@ -29,7 +29,6 @@ pest()
     })
     ->beforeAll(function () {
         $_SERVER['globalHook']->beforeAll = 0;
-        $_SERVER['globalHook']->calls->beforeAll++;
     })
     ->afterEach(function () {
         if (! isset($this->ith)) {

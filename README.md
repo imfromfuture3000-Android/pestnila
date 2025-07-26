@@ -15,8 +15,13 @@
 **Pest** is an elegant PHP testing Framework with a focus on simplicity, meticulously designed to bring back the joy of testing in PHP.
 
 - Explore our docs at **[pestphp.com »](https://pestphp.com)**
-- Follow us on Twitter at **[@pestphp »](https://twitter.com/pestphp)**
-- Join us at **[discord.gg/kaHY6p54JH »](https://discord.gg/kaHY6p54JH)** or **[t.me/+kYH5G4d5MV83ODk0 »](https://t.me/+kYH5G4d5MV83ODk0)**
+- Follow the creator Nuno Maduro:
+    - YouTube: **[youtube.com/@nunomaduro](https://www.youtube.com/@nunomaduro)** — Videos every weekday
+    - Twitch: **[twitch.tv/enunomaduro](https://www.twitch.tv/enunomaduro)** — Streams (almost) every weekday
+    - Twitter / X: **[x.com/enunomaduro](https://x.com/enunomaduro)**
+    - LinkedIn: **[linkedin.com/in/nunomaduro](https://www.linkedin.com/in/nunomaduro)**
+    - Instagram: **[instagram.com/enunomaduro](https://www.instagram.com/enunomaduro)**
+    - Tiktok: **[tiktok.com/@enunomaduro](https://www.tiktok.com/@enunomaduro)**
 
 ## Sponsors
 
@@ -29,17 +34,16 @@ We cannot thank our sponsors enough for their incredible support in funding Pest
 
 ### Gold Sponsors
 
-- **[CodeRabbit](https://coderabbit.ai/?ref=pestphp)**
-- **[LaraJobs](https://larajobs.com/?ref=pestphp)**
 - **[Brokerchooser](https://brokerchooser.com/?ref=pestphp)**
-- **[Forge](https://forge.laravel.com/?ref=pestphp)**
+- **[CodeRabbit](https://coderabbit.ai/?ref=pestphp)**
+- **[NativePHP](https://nativephp.com/mobile?ref=pestphp.com)**
 
 ### Premium Sponsors
 
 - [Akaunting](https://akaunting.com/?ref=pestphp)
-- [Codecourse](https://codecourse.com/?ref=pestphp)
 - [DocuWriter.ai](https://www.docuwriter.ai/?ref=pestphp)
 - [Localazy](https://localazy.com/?ref=pestphp)
+- [Forge](https://forge.laravel.com/?ref=pestphp)
 - [Route4Me](https://www.route4me.com/?ref=pestphp)
 - [Spatie](https://spatie.be/?ref=pestphp)
 - [Worksome](https://www.worksome.com/?ref=pestphp)

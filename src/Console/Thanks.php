@@ -22,10 +22,14 @@ final readonly class Thanks
      *
      * @var array<string, string>
      */
-    private const FUNDING_MESSAGES = [
+    private const array FUNDING_MESSAGES = [
         'Star' => 'https://github.com/pestphp/pest',
-        'News' => 'https://twitter.com/pestphp',
-        'Videos' => 'https://youtube.com/@nunomaduro',
+        'YouTube' => 'https://youtube.com/@nunomaduro',
+        'TikTok' => 'https://tiktok.com/@nunomaduro',
+        'Twitch' => 'https://twitch.tv/enunomaduro',
+        'LinkedIn' => 'https://linkedin.com/in/nunomaduro',
+        'Instagram' => 'https://instagram.com/enunomaduro',
+        'X' => 'https://x.com/enunomaduro',
         'Sponsor' => 'https://github.com/sponsors/nunomaduro',
     ];
 
