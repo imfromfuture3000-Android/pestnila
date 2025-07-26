@@ -1731,4 +1731,8 @@
    WARN  Tests\Visual\Version
   - visual snapshot of help command output
 
-  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1157 passed (2766 assertions)
+   PASS  Testsexternal\Features\Expect\toMatchSnapshot
+  ✓ pass with dataset with ('my-datas-set-value')
+  ✓ within describe → pass with dataset with ('my-datas-set-value')
+
+  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 38 todos, 33 skipped, 1159 passed (2774 assertions)
