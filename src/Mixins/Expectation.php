@@ -781,15 +781,13 @@ final class Expectation
         foreach ($array as $key => $value) {
             Assert::assertArrayHasKey($key, $valueAsArray, $message);
 
-            if ($message === '') {
-                $message = sprintf(
-                    'Failed asserting that an array has a key %s with the value %s.',
-                    $this->export($key),
-                    $this->export($valueAsArray[$key]),
-                );
-            }
+            $second_message = $message !== '' ? $message : sprintf(
+                'Failed asserting that an array has a key %s with the value %s.',
+                $this->export($key),
+                $this->export($valueAsArray[$key]),
+            );
 
-            Assert::assertEquals($value, $valueAsArray[$key], $message);
+            Assert::assertEquals($value, $valueAsArray[$key], $second_message);
         }
 
         return $this;
@@ -814,15 +812,13 @@ final class Expectation
             /* @phpstan-ignore-next-line */
             $propertyValue = $this->value->{$property};
 
-            if ($message === '') {
-                $message = sprintf(
-                    'Failed asserting that an object has a property %s with the value %s.',
-                    $this->export($property),
-                    $this->export($propertyValue),
-                );
-            }
+            $second_message = $message !== '' ? $message : sprintf(
+                'Failed asserting that an object has a property %s with the value %s.',
+                $this->export($property),
+                $this->export($propertyValue),
+            );
 
-            Assert::assertEquals($value, $propertyValue, $message);
+            Assert::assertEquals($value, $propertyValue, $second_message);
         }
 
         return $this;
