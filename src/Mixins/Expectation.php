@@ -800,7 +800,7 @@ final class Expectation
      * @param  iterable<string, mixed>  $object
      * @return self<TValue>
      */
-    public function toMatchObject(iterable $object, string $message = ''): self
+    public function toMatchObject(object|iterable $object, string $message = ''): self
     {
         foreach ((array) $object as $property => $value) {
             if (! is_object($this->value) && ! is_string($this->value)) {
