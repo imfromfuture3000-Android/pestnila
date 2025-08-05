@@ -83,9 +83,6 @@
    PASS  Tests\Features\Covers\ClassCoverage
   ✓ it uses the correct PHPUnit attribute for class
 
-   PASS  Tests\Features\Covers\CoversNothing
-  ✓ it uses the correct PHPUnit attribute for covers nothing
-
    PASS  Tests\Features\Covers\ExceptionHandling
   ✓ it throws exception if no class nor method has been found
 
@@ -1785,4 +1782,4 @@
   ✓ pass with dataset with ('my-datas-set-value')
   ✓ within describe → pass with dataset with ('my-datas-set-value')
 
-  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 39 todos, 35 skipped, 1189 passed (2816 assertions)
+  Tests:    2 deprecated, 4 warnings, 5 incomplete, 2 notices, 39 todos, 35 skipped, 1188 passed (2814 assertions)

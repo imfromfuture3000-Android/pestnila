@@ -120,7 +120,7 @@ final class TestSuite
         assert($this->test instanceof TestCase);
 
         $description = str_replace('__pest_evaluable_', '', $this->test->name());
-        $datasetAsString = str_replace('__pest_evaluable_', '', Str::evaluable($this->test->dataSetAsStringWithData()));
+        $datasetAsString = str_replace('__pest_evaluable_', '', Str::evaluable($this->test->dataSetAsString()));
 
         return str_replace(' ', '_', $description.$datasetAsString);
     }

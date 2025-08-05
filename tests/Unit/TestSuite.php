@@ -40,7 +40,7 @@ it('alerts users about tests with arguments but no input', function () {
     $testSuite->tests->set($method);
 })->throws(
     DatasetMissing::class,
-    sprintf("A test with the description '%s' has %d argument(s) ([%s]) and no dataset(s) provided in %s", 'bar', 1, 'int $arg', 'foo'),
+    sprintf('A test with the description [%s] has [%d] argument(s) ([%s]) and no dataset(s) provided in [%s]', 'bar', 1, 'int $arg', 'foo'),
 );
 
 it('can return an array of all test suite filenames', function () {

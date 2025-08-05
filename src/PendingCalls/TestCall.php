@@ -659,19 +659,6 @@ final class TestCall // @phpstan-ignore-line
     }
 
     /**
-     * Sets that the current test covers nothing.
-     */
-    public function coversNothing(): self
-    {
-        $this->testCaseMethod->attributes[] = new Attribute(
-            \PHPUnit\Framework\Attributes\CoversNothing::class,
-            [],
-        );
-
-        return $this;
-    }
-
-    /**
      * Adds one or more references to the tested method or class. This helps
      * to link test cases to the source code for easier navigation.
      *
