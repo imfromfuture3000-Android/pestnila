@@ -34,9 +34,9 @@ We cannot thank our sponsors enough for their incredible support in funding Pest
 
 ### Gold Sponsors
 
-- **[Brokerchooser](https://brokerchooser.com/?ref=pestphp)**
 - **[CodeRabbit](https://coderabbit.ai/?ref=pestphp)**
 - **[NativePHP](https://nativephp.com/mobile?ref=pestphp.com)**
+- **[CMS Max](https://cmsmax.com/?ref=pestphp)**
 
 ### Premium Sponsors
 
