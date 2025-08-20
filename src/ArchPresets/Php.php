@@ -19,6 +19,7 @@ final class Php extends AbstractPreset
     {
         $this->expectations[] = expect([
             'debug_zval_dump',
+            'debug_backtrace',
             'debug_print_backtrace',
             'dump',
             'ray',
