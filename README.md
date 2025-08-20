@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/pestphp/art/master/v3/banner.png" width="600" alt="PEST">
+    <img src="https://raw.githubusercontent.com/pestphp/art/master/v4/social.png" width="600" alt="PEST">
     <p align="center">
         <a href="https://github.com/pestphp/pest/actions"><img alt="GitHub Workflow Status (master)" src="https://img.shields.io/github/actions/workflow/status/pestphp/pest/tests.yml?branch=3.x&label=Tests%203.x"></a>
         <a href="https://packagist.org/packages/pestphp/pest"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/pestphp/pest"></a>
@@ -10,7 +10,7 @@
 
 ------
 
-> Pest v3 Now Available: **[Read the announcement »](https://pestphp.com/docs/pest3-now-available)**.
+> Pest v4 Now Available: **[Read the announcement »](https://pestphp.com/docs/pest-v4-is-here-now-with-browser-testing)**.
 
 **Pest** is an elegant PHP testing Framework with a focus on simplicity, meticulously designed to bring back the joy of testing in PHP.
 
