@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pest\Support;
 
 use Pest\Exceptions\ShouldNotHappen;
+use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Node\Directory;
 use SebastianBergmann\CodeCoverage\Node\File;
 use SebastianBergmann\Environment\Runtime;
@@ -87,19 +88,9 @@ final class Coverage
             throw ShouldNotHappen::fromMessage(sprintf('Coverage not found in path: %s.', $reportPath));
         }
 
-        $handle = fopen($reportPath, 'r');
-        $code = '';
-        while (is_resource($handle) && ! feof($handle)) {
-            $code .= fread($handle, 8192);
-        }
-
-        if (is_resource($handle)) {
-            fclose($handle);
-        }
-
+        /** @var CodeCoverage $codeCoverage */
+        $codeCoverage = require $reportPath;
         unlink($reportPath);
-
-        $codeCoverage = eval(substr($code, 5));
 
         $totalCoverage = $codeCoverage->getReport()->percentageOfExecutedLines();
 

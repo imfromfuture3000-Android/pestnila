@@ -26,7 +26,6 @@ final class BootOverrides implements Bootstrapper
         'TextUI/TestSuiteFilterProcessor.php',
         'Event/Value/ThrowableBuilder.php',
         'Logging/JUnit/JunitXmlLogger.php',
-        'Report/PHP.php',
     ];
 
     /**
