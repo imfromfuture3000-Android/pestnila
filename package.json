@@ -1,0 +1,50 @@
+{
+  "name": "pest-2.0-solidity",
+  "version": "2.0.0",
+  "description": "Elegant Smart Contract Testing Framework for Ethereum - Remix IDE Ready",
+  "main": "contracts/Pest.sol",
+  "scripts": {
+    "lint": "echo 'Use Remix IDE for compilation and validation'",
+    "test": "echo 'Deploy CalculatorTests contract in Remix IDE and run runAllTests()'",
+    "deploy": "echo 'Use Remix IDE Deploy & Run Transactions tab'"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "testing",
+    "smart-contracts",
+    "remix",
+    "blockchain",
+    "framework",
+    "pest",
+    "assertions",
+    "web3"
+  ],
+  "author": "Pest Team (inspired by Nuno Maduro's PHP Pest)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imfromfuture3000-Android/pestnila"
+  },
+  "bugs": {
+    "url": "https://github.com/imfromfuture3000-Android/pestnila/issues"
+  },
+  "homepage": "https://github.com/imfromfuture3000-Android/pestnila#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "solidity": {
+    "version": "^0.8.30",
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    }
+  },
+  "remix": {
+    "compatible": true,
+    "version": "0.8.30+commit.73712a01",
+    "url": "https://remix.ethereum.org/#version=soljson-v0.8.30+commit.73712a01.js&optimize=false&runs=200&gist=&lang=en"
+  }
+}
